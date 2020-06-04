@@ -1,0 +1,151 @@
+// Find first set bit  py3
+def getFirstSetBit(n):
+    #Your code here
+    bin_rep = bin(n)
+    req_bin_rep = bin_rep[1:][::-1]
+    if '1' not in req_bin_rep:
+        return "0"
+    else:
+        for ind,val in enumerate(req_bin_rep):
+            if val == '1':
+                break
+        return (ind+1)
+-----------------------------------
+-----------------------------------
+// Rightmost Diff Bit py3
+def posOfRightMostDiffBit(m,n):
+    #Your code here
+    if m==n:
+        return -1
+    else:
+        num = ~(m^n)
+        k = 1
+        while True:
+            if (num & (1<<(k-1)))==0:
+                return k
+            else:
+                k += 1
+-----------------------------------
+-----------------------------------
+//Check whether K-th bit is set or not py3
+def checkKthBit(n,k):
+    #Your code here
+    if (n & (1<<k)!=0):
+        return True
+    else:
+        return False
+-----------------------------------
+-----------------------------------
+// countSetBits py3
+def countSetBits(n):
+    ##Your code here
+    S = 0
+    for i in range(1,n+1):
+        bin_rep = bin(i)[2:]
+        S += bin_rep.count('1')
+    return (S)
+-----------------------------------
+-----------------------------------
+// Bit Difference py3
+def countBitsFlip(a,b):
+    ##Your code here
+    c = a ^ b
+    cc = bin(c)[2:].count('1')
+    return (cc)
+-----------------------------------
+-----------------------------------
+// Number is sparse or not py3
+def isSparse(n):
+    #Your code here 
+    bin_rep = bin(n)[2:]
+    k = bin_rep[0]
+    for i in range(len(bin_rep[1:])):
+        if k == '1':
+            if bin_rep[1:][i] == k:
+                return False
+            else:
+                k = bin_rep[1:][i]
+        else:
+            k = bin_rep[1:][i]
+    return True
+-----------------------------------
+-----------------------------------
+// Longest Consecutive 1's py3
+def maxConsecutiveOnes(x):
+    ##Your code here
+    bin_rep = bin(x)[2:]
+    str1s = bin_rep.split('0')
+    #if the problem is about longest consecutive zeros
+    #then 1 is used as delimiter/separator
+    #str0s = bin_rep.split('1')
+    return (max([len(u) for u in str1s]))
+-----------------------------------
+-----------------------------------
+//Binary To Gray Code py3
+def greyConverter(n):
+    ##Your code here
+    bin_rep = bin(n)[2:]
+    gray = bin_rep[0]
+    for i in range(1,len(bin_rep)):
+        gray += str(int(bin_rep[i-1]) ^ int(bin_rep[i]))
+    return int(gray,2)
+-----------------------------------
+-----------------------------------
+//Gray to Binary py3
+def grayToBinary(n):
+    ##Your code here
+    gray_rep = bin(n)[2:]
+    binary = gray_rep[0]
+    for i in range(1,len(gray_rep)):
+        if gray_rep[i] == '0':
+            binary += binary[i-1]
+        else:
+            binary += str(int(not int(binary[i-1])))
+    return int(binary,2)
+-----------------------------------
+-----------------------------------
+//Power of Two py3
+def isPowerofTwo(n):
+    ##Your code here
+    if n!=0 and (n & (n-1))==0:
+        return True
+    else:
+        return False
+-----------------------------------
+-----------------------------------
+// Swap all odd and even bits py3
+def swapBits(n):
+    #Your code here
+    even_bits = n & 0xAAAAAAAA
+    odd_bits = n & 0x55555555
+    even_bits >>= 1
+    odd_bits <<= 1
+    return (even_bits | odd_bits)
+-----------------------------------
+-----------------------------------
+// Maximum AND Value py3
+count = 0      
+    for i in range(0, n) : 
+        if ((pattern & arr[i]) == pattern) : 
+            count = count + 1
+    return count 
+  
+# Function for finding maximum and  
+# value pair 
+def maxAND (arr,  n) : 
+    res = 0
+      
+    # iterate over total of 30bits  
+    # from msb to lsb 
+    for bit in range(31,-1,-1) : 
+        
+        # find the count of element 
+        # having set  msb 
+        count = checkBit(res | (1 << bit), arr, n) 
+   
+        # if count >= 2 set particular 
+        # bit in result 
+        if ( count >= 2 ) : 
+            res =res | (1 << bit) 
+              
+    return res

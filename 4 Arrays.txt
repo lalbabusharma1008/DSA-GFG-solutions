@@ -1,0 +1,266 @@
+-----------------------------------
+-----------------------------------
+//insertAtEnd py3
+def insertAtEnd(arr,sizeOfArray,element):
+    ##Your code here
+    arr.append(element)
+-----------------------------------
+-----------------------------------
+//insertAtIndex py3
+def insertAtIndex( arr, sizeOfArray, index, element):
+    #Your code here
+    if len(arr) <= index:
+        arr.append(element)
+    else:
+        arr.insert(index,element)
+        arr.pop()
+-----------------------------------
+-----------------------------------
+// Mean And Median of Array py3
+def median(A,N):
+    
+    A.sort()
+    
+    ##Your code here
+    #If median is fraction then convert the median to integer and return
+    if (N-1)%2 == 0:
+        return (A[(N-1)//2])
+    else:
+        return (int((A[N//2 - 1] + A[N//2])/2))
+    
+def mean(A,N):
+    ##Your code here
+    total = sum(A)
+    return (int(total/N))
+-----------------------------------
+-----------------------------------
+//  Who has the majority? py3
+import collections
+def majorityWins(arr, n,  x,y):
+    # code here
+    counts = collections.Counter(arr)
+    if counts[x] > counts[y]:
+        return x
+    elif counts[x] < counts[y]:
+        return y
+    else:
+        return min(x,y)
+-----------------------------------
+-----------------------------------
+// Max and Second Max py3
+def largestAndSecondLargest(sizeOfArray, arr):
+    max1 = -1
+    max2 = -1
+    max1 = max(arr)
+    others = []
+    for i in arr:
+        if i!=max1:
+            others.append(i)
+    if others:
+        max2 = max(others)
+    else:
+        max2 = -1
+    print (max1, max2)
+-----------------------------------
+-----------------------------------
+// Strongest Neighbour py3
+def maximumAdjacent(sizeOfArray, arr):
+    
+    # Your code here
+    # Function should print max of all adjacents
+    for i in range(len(arr)-1):
+        print (max(arr[i],arr[i+1]),end=" ")
+-----------------------------------
+-----------------------------------
+//reverseInGroups py3
+def reverseInGroups(A,N,K):
+    #Your code here
+    v = []
+    for i in range(0,len(A),K):
+        v += reversed(A[i:i+K])
+    return v
+-----------------------------------
+-----------------------------------
+//rotateArr py3
+def rotateArr(A,D,N):
+    ##Your code here
+    A[:D] = A[:D][::-1]
+    A[D:] = A[D:][::-1]
+    f = A[:D] + A[D:]
+    A[:] = f[::-1]
+-----------------------------------
+-----------------------------------
+// Minimum adjacent difference in a circular array py3
+def minAdjDiff(arr, n):
+    ##Your code here
+    min_dff = abs(arr[0]-arr[1])
+    for i in range(1,len(arr)-1):
+        if abs(arr[i]-arr[i+1]) < min_dff:
+            min_dff = abs(arr[i]-arr[i+1])
+        else:
+            continue
+    if min_dff > abs(arr[0]-arr[n-1]):
+        min_dff = abs(arr[0]-arr[n-1])
+    return min_dff
+-----------------------------------
+-----------------------------------
+//wave array py3
+def convertToWave(A,N):
+    #Your code here
+    temp=0
+    for i in range(N-1):
+        if i%2 == 0:
+            if A[i] < A[i+1]:
+                temp=A[i]
+                A[i]=A[i+1]
+                A[i+1]=temp
+            else:
+                continue
+        else:
+            if A[i] > A[i+1]:
+                temp=A[i]
+                A[i]=A[i+1]
+                A[i+1]=temp
+            else:
+                continue
+-----------------------------------
+-----------------------------------
+// Frequencies of Limited Range Array Elements py3
+import collections
+def printfrequency(A,N):
+    #Your Code here
+    freq_dict = collections.Counter(A)
+    for i in range(1,N+1):
+        print (freq_dict[i],end=" ")
+-----------------------------------
+-----------------------------------
+//equilibriumPoint py3
+def equilibriumPoint(A, N):
+    # Your code here
+    total = sum(A)
+    r = 0
+    for index in range(N-1, -1, -1):
+        l = total - r - A[index]
+        if l==r:
+            return index+1
+        r += A[index]
+    return -1
+-----------------------------------
+-----------------------------------
+// Leaders in an array py3
+def leaders(A,N):
+    #Your code here
+    
+    '''
+    Just return the list with leaders in it
+    '''
+    maxx = A[::-1][0]
+    leaders = [maxx]
+    for i in A[::-1][1:]:
+        if i >= maxx:
+            maxx = i
+            leaders.append(maxx)
+    return leaders[::-1]
+-----------------------------------
+-----------------------------------
+// Rearrange Array Alternately py3
+def rearrange(arr, n): 
+    ##Your code here
+    if n%2 == 0:
+        for i in range(n//2):
+            arr.append(arr[n-1-i])
+            arr.append(arr[i])
+    else:
+        for i in range(n//2):
+            arr.append(arr[n-1-i])
+            arr.append(arr[i])
+        arr.append(arr[math.floor(n/2)])
+    arr[:] = arr[n:]
+    return arr
+-----------------------------------
+-----------------------------------
+// Rearrange an array with O(1) extra space py3
+def arrange(arr, n): 
+    #Your code here
+    for i in range(n):
+        arr.append(arr[arr[i]])
+    arr[:] = arr[n:]
+-----------------------------------
+-----------------------------------
+//trappingWater py3
+def trappingWater(arr,n):
+    #Your code here
+    left = [0]*n 
+ 
+    right = [0]*n 
+  
+    # Initialize result 
+    water = 0
+  
+    # Fill left array 
+    left[0] = arr[0] 
+    for i in range( 1, n): 
+        left[i] = max(left[i-1], arr[i]) 
+  
+    # Fill right array 
+    right[n-1] = arr[n-1] 
+    for i in range(n-2, -1, -1): 
+        right[i] = max(right[i+1], arr[i]);
+-----------------------------------
+-----------------------------------
+// Kadane's Algorithm py3
+    indicator_array = [True if i >=0 else False for i in arr]
+    if True in indicator_array:
+        max_so_far=max_ending_here=0
+        for a in range(n):
+            max_ending_here = max_ending_here + arr[a]
+            if max_ending_here < 0:
+                max_ending_here = 0
+            if max_so_far < max_ending_here:
+                max_so_far = max_ending_here
+        return (max_so_far)
+    elif False in indicator_array and True not in indicator_array:
+        return (max(arr))
+-----------------------------------
+-----------------------------------
+// Max Circular Subarray Sum py3
+    indicator_array = [True if i >=0 else False for i in arr]
+    if True in indicator_array:
+        max_so_far=max_ending_here=0
+        for a in range(len(arr)):
+            max_ending_here = max_ending_here + arr[a]
+            if max_ending_here < 0:
+                max_ending_here = 0
+            if max_so_far < max_ending_here:
+                max_so_far = max_ending_here
+        return (max_so_far)
+    elif False in indicator_array and True not in indicator_array:
+        return (max(arr))
+        
+        
+def circularSubarraySum(arr,n):
+    indicator_array = [True if i >=0 else False for i in arr]
+    ##Your code here
+    # Case 1: get the maximum sum using standard kadane's 
+    # algorithm 
+    if True in indicator_array:
+        max_kadane = maxSubArraySum(arr) 
+  
+        # Case 2: Now find the maximum sum that includes corner 
+        # elements. 
+        max_wrap = 0
+        for i in range(0,n):
+            max_wrap += arr[i] 
+            arr[i] = -arr[i] 
+ 
+        # Max sum with corner elements will be: 
+        # array-sum - (-max subarray sum of inverted array) 
+        max_wrap = max_wrap + maxSubArraySum(arr) 
+  
+        # The maximum circular sum will be maximum of two sums 
+        if max_wrap > max_kadane: 
+            return max_wrap 
+        else: 
+            return max_kadane
+    elif False in indicator_array and True not in indicator_array:
+        return (max(arr))

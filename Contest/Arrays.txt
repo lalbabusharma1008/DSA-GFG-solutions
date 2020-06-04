@@ -1,0 +1,87 @@
+
+// Nearest Perfect Square py3
+def nearPerfectSq(n):
+    sqr = math.sqrt(n)
+    if str(sqr).split('.')[1]=='0':
+        p,q = int(sqr)-1,int(sqr)+1
+        diffp,diffq = abs(p**2 - n),abs(q**2 - n)
+        if min(diffp,diffq) == diffp:
+            return p**2
+        else:
+            return q**2
+    a,b = math.floor(sqr),math.ceil(sqr)
+    sqa,sqb = a**2,b**2
+    if abs(sqa-n) == abs(sqb-n):
+        return max(sqa,sqb)
+    else:
+        minD = min(abs(sqa-n),abs(sqb-n))
+        if minD == abs(sqa-n):
+            return sqa
+        else:
+            return sqb
+
+
+if __name__ == '__main__':
+    T = int(input())
+    for t in range(T):
+        n = int(input())
+        
+        print (nearPerfectSq(n))
+
+---------------------------------------
+---------------------------------------
+// Get The Shadow py3
+def getTheShadow(arr,n):
+    repNums = []
+    freqs = collections.Counter(arr)
+    for k,v in freqs.items():
+        if v == 2:
+            repNums.append(k)
+    for i in range(n):
+        if arr[abs(arr[i])-1]> 0:
+            arr[abs(arr[i])-1] = -arr[abs(arr[i])-1]
+    missNums = []
+    for i in range(n):
+        if arr[i] > 0:
+            missNums.append(i+1)
+    return ' '.join([str(repNums[0]),str(missNums[0])])
+
+if __name__ == '__main__':
+    T = int(input())
+    for t in range(T):
+        n = int(input())
+        arr = list(map(int,input().strip().split()))
+        print (getTheShadow(arr,n))
+---------------------------------------
+---------------------------------------
+// The Conversion To One py3
+    count = 0
+  
+    while (N): 
+        count += N % 2
+        N //= 2
+  
+    return count 
+
+def minOperations(N):
+    ans = 0
+  
+    while (N != 1): 
+        if (N % 2 == 0): 
+            N //= 2 
+        elif (N == 3 or set_bits(N - 1) < set_bits(N + 1)): 
+            N -= 1
+        else: 
+            N += 1
+  
+        ans += 1
+  
+    return ans 
+    
+
+if __name__ == '__main__':
+    T = int(input())
+    for t in range(T):
+        N = int(input())
+        print (minOperations(N))
+

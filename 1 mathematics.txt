@@ -1,0 +1,130 @@
+//absolute value C++
+int absolute(int I) {
+    if(I>0)
+		return I;
+	else
+		return -(I);
+}
+
+-----------------------------------
+-----------------------------------
+//Convert Celsius To Fahrenheit c++
+double cToF(int C)
+{
+    return ((9*C)/5)+32;
+    //Your code here
+}
+-----------------------------------
+-----------------------------------
+//  Quadratic Equation Roots c++
+void quadraticRoots(int a,int b, int c)
+{
+   
+   //Your code here
+   float x1, x2, discriminant, realPart, imaginaryPart;
+   discriminant = b*b - 4*a*c;
+   
+   if (discriminant > 0) {
+        x1 = (-b + sqrt(discriminant)) / (2*a);
+        x2 = (-b - sqrt(discriminant)) / (2*a);
+        cout<<floor(x1)<<" "<<floor(x2);
+    }
+    
+    else if (discriminant == 0) {
+        x1 = (-b + sqrt(discriminant)) / (2*a);
+        cout<<floor(x1)<<" "<<floor(x1);
+    }
+
+    else {
+        cout << "Imaginary";
+    }
+}
+-----------------------------------
+-----------------------------------
+// Factorial Of Number c++
+long long factorial (int N)
+{
+    if (N == 0) 
+        return 1; 
+    return N * factorial(N - 1);
+}
+-----------------------------------
+-----------------------------------
+// Digits In Factorial c++
+int digitsInFactorial(int N)
+{
+    //Your code here
+    if (N < 0) 
+        return 0; 
+
+    if (N <= 1) 
+        return 1; 
+
+    double digits = 0; 
+    for (int i=2; i<=N; i++) 
+        digits += log10(i); 
+  
+    return floor(digits) + 1;
+}
+-----------------------------------
+-----------------------------------
+// GP term py3
+def termOfGP(A,B,N):
+    return (A*((B/A)**(N-1)))
+-----------------------------------
+-----------------------------------
+//primality test c++
+bool isPrime(int N)
+{
+    
+    if (N <= 1) 
+        return false; 
+  
+    for (int i = 2; i < N; i++) 
+        if (N % i == 0) 
+            return false; 
+  
+    return true;  
+}
+-----------------------------------
+-----------------------------------
+// Exactly 3 Divisors py3
+def exactly3Divisors(N):
+    ##Your code here
+    count = 0
+    i = 2
+    while ((i*i)<=N):
+        flag=True
+        j = 2
+        while (j <= i/2):
+            if i%j == 0:
+                flag = False
+            j += 1
+            
+        if flag:
+            count += 1
+        i += 1
+    return (count)
+-----------------------------------
+-----------------------------------
+// Addition Under Modulo py3
+def sumUnderModulo(a,b):
+    M = 1000000007
+    return (sum((a,b))%M)
+-----------------------------------
+-----------------------------------
+// multiplication Under Modulo py3
+def multiplicationUnderModulo(a,b):
+    M = 1000000007
+    # code here
+    return ((a*b)%M)
+
+-----------------------------------
+-----------------------------------
+// Modular Multiplicative Inverse py3
+def modInverse(a,m):
+    a = a%m
+    for x in range(1,m):
+        if ((a*x)%m) == 1:
+            return x
+    return -1

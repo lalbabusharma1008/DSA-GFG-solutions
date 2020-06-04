@@ -1,0 +1,32 @@
+---------------------------------------
+---------------------------------------
+// K sum py3
+    arr = sorted(arr)
+    return sum(arr[:k])
+    
+if __name__ == '__main__':
+    t = int(input())
+    for tcase in range(t):
+        N,K = list(map(int,input().strip().split()))
+        arr = list(map(int,input().strip().split()))
+        print (ksum(arr,K))
+---------------------------------------
+---------------------------------------
+//XOR pair py3
+    result = 0
+    s = set()
+    for i in range(n):
+        if (c ^ arr[i]) in s:
+            result += 1
+        s.add(arr[i])
+    if result > 0:
+        return "Yes"
+    else:
+        return "No"
+        
+if __name__ == '__main__':
+    t = int(input())
+    for tcase in range(t):
+        N,C = list(map(int,input().strip().split()))
+        arr = list(map(int,input().strip().split()))
+        print (XORPair(arr,N,C))

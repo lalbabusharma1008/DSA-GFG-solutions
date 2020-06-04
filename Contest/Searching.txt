@@ -1,0 +1,74 @@
+---------------------------------------
+---------------------------------------
+// A Boolean Matrix Problem py3
+    for i in range(m):
+        if '1' in arr[i]:
+            arr[i] = ['1'] * n
+    x = [" ".join(h) for h in arr]
+    return "\n".join(x)
+    
+if __name__ == '__main__':
+    T = int(input())
+    for tcase in range(T):
+        M,N = list(map(int,input().strip().split()))
+        arr = []
+        for r in range(M):
+            row = list(map(str,input().strip().split()))
+            arr.append(row)
+        print (modified_matrix(arr,M,N))
+---------------------------------------
+---------------------------------------
+// Toggle The Middle py3
+    a = bin(n)[2:]
+    x = list(a)
+    if len(a)%2 == 0:
+        u = len(a)
+        if x[(u//2)-1] == '1':
+            x[(u//2)-1] = '0'
+        elif x[(u//2)-1] == '0':
+            x[(u//2)-1] = '1'
+        if x[(u//2) + 1 - 1] == '1':
+            x[(u//2) + 1 - 1] = '0'
+        elif x[(u//2) + 1 - 1] == '0':
+            x[(u//2) + 1 - 1] = '1'
+    else:
+        u = len(a)
+        if x[((u+1)//2)-1] == '1':
+            x[((u+1)//2)-1] = '0'
+        elif x[((u+1)//2)-1] == '0':
+            x[((u+1)//2)-1] = '1'
+    y = "".join(x)
+    return int(y,2)
+
+if __name__ == '__main__':
+    t = int(input())
+    for c in range(t):
+        n = int(input())
+        print (ToggleBits(n))
+---------------------------------------
+---------------------------------------
+// Without Adjacent py3
+    incl = 0
+    excl = 0
+     
+    for i in arr: 
+          
+        # Current max excluding i (No ternary in  
+        # Python) 
+        new_excl = excl if excl>incl else incl 
+         
+        # Current max including i 
+        incl = excl + int(i)
+        excl = new_excl 
+      
+    # return max of incl and excl 
+    return (excl if excl>incl else incl) 
+
+if __name__ == '__main__':
+    t = int(input())
+    for c in range(t):
+        N = int(input())
+        arr = input().strip().split()
+        print (withoutAdjacent(arr))
+---------------------------------------
+---------------------------------------
