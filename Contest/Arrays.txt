@@ -1,5 +1,6 @@
 
 // Nearest Perfect Square py3
+import math
 def nearPerfectSq(n):
     sqr = math.sqrt(n)
     if str(sqr).split('.')[1]=='0':
@@ -31,6 +32,7 @@ if __name__ == '__main__':
 ---------------------------------------
 ---------------------------------------
 // Get The Shadow py3
+import collection
 def getTheShadow(arr,n):
     repNums = []
     freqs = collections.Counter(arr)
