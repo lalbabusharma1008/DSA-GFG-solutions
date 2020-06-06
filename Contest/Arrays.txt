@@ -57,6 +57,7 @@ if __name__ == '__main__':
 ---------------------------------------
 ---------------------------------------
 // The Conversion To One py3
+def set_bits(N): 
     count = 0
   
     while (N): 
@@ -81,9 +82,8 @@ def minOperations(N):
     return ans 
     
 
-if __name__ == '__main__':
+if _name_ == '_main_':
     T = int(input())
     for t in range(T):
         N = int(input())
         print (minOperations(N))
-
